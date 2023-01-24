@@ -3,10 +3,19 @@ on:
   push:
     branches:
       - master # check your repo, your default branch might be master!
+  pull_request:
  
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: github.ref != 'refs/heads/master'
+    steps:
+      - uses: actions/checkout@v2
+      - run: docker build -t sayakghosh/frontend -f Dockerfile.dev .
+      - run: docker run -e CI=true sayakghosh/frontend npm run test
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    if: github.ref != 'refs/heads/master'
     steps:
       - uses: actions/checkout@v2
       - run: docker build -t sayakghosh/frontend -f Dockerfile.dev .
