@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          My name is TopG. I was changed on the feature branch !!!
+          My name is TopG. Man I changed deploy.yaml to try ...
         </p>
         <a
           className="App-link"
